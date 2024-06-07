@@ -40,3 +40,81 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-color: rgb(10, 6, 44);
+  color: #D86F5A;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+h3, p, ul {
+  margin-top: 5px;
+}
+
+h4 {
+  margin-bottom: 5px;
+}
+
+img {
+  height: 250px;
+  width: 250px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: 2px dashed #83cef1;
+  cursor: pointer;
+}
+
+button {
+  background-color: #D86F5A;
+}
+button:hover {
+  border-color: #83cef1;
+}
+
+.cocktails-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+input {
+  border-radius: 5px;
+  height: 20px;
+  padding: 5px;
+  color: rgb(10, 6, 44);
+}
+
+input:focus {
+  outline-color: #D86F5A;
+  color: rgb(10, 6, 44);
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.intro {
+  font-style: italic;
+  color: #83cef1;
+}
+
+.instructions {
+  max-width: 250px;
+  color:#83cef1;
+}
+
+#randomCocktail > div {
+  margin: 0 auto;
+}
