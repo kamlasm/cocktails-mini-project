@@ -6,7 +6,7 @@ function App() {
 
   const [randomCocktail, setRandomCocktail] = React.useState(null)
   const [cocktails, setCocktails] = React.useState(null)
-  const [search, setSearch] = React.useState(null)
+  const [search, setSearch] = React.useState('')
 
   async function fetchRandomCocktail() {
     const resp = await fetch('https://thecocktaildb.com/api/json/v1/1/random.php')
@@ -14,13 +14,7 @@ function App() {
     setRandomCocktail(randomCocktail.drinks[0])
   }
 
-  async function fetchCocktails() {
-    const resp = await fetch('https://thecocktaildb.com/api/json/v1/1/search.php?s=')
-    const cocktails = await resp.json()
-    setCocktails(cocktails.drinks)
-  }
-
-  async function filterCocktails(search) {
+  async function fetchCocktails(search) {
     const resp = await fetch(`https://thecocktaildb.com/api/json/v1/1/search.php?s=${search}`)
     const cocktails = await resp.json()
     setCocktails(cocktails.drinks)
@@ -28,13 +22,13 @@ function App() {
 
   React.useEffect(() => {
     fetchRandomCocktail()
-    fetchCocktails()
-  }, [])
+    fetchCocktails(search)
+  }, [search])
 
   function handleSearch(e) {
     const search = e.target.value
     setSearch(search)
-    filterCocktails(search)
+    fetchCocktails(search)
   }
 
   function changeRandomCocktail() {
@@ -54,7 +48,7 @@ function App() {
     
     <div>
       <h2>Or search for your favourite cocktail!</h2>
-      <input placeholder='e.g. margarita' onChange={handleSearch}/>   
+      <input placeholder='e.g. margarita' onChange={handleSearch} value={search}/>   
       <div className='cocktails-div'>
       {cocktails && cocktails.map((cocktail) => {
         return < Cocktail 
